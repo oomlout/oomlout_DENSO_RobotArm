@@ -1,0 +1,40 @@
+SM:IRA-0001-P.map:'link map'
+MV:1.9:'compiler version'
+TC:0:'Trace Code'
+SA:'allocation map'
+LM:1:PRO1.ric:0000:1000-1079:'link module'
+ #  0: 0005, 1, 1072, PRO1+PRINTLINE,     0,     0,     0
+ #  1: 0006, 1, 1067, PRO1+POSCUR,     0,     0,     0
+ #  2: 0002, 1, 105d, PRO1+XLOOP,     0,     0,     0
+ #  3: 0006, 1, 105c, PRO1+POINT2,     0,     0,     0
+ #  4: 0002, 1, 105b, PRO1+WORKING,     0,     0,     0
+ #  5: 0103, 1, 1059, PRO1+ARRAZ,    50,     0,     0
+ #  6: 0103, 1, 1057, PRO1+ARRAY,    50,     0,     0
+ #  7: 0103, 1, 1055, PRO1+ARRAX,    50,     0,     0
+ #  8: 0103, 1, 1053, PRO1+ARRZ,    50,     0,     0
+ #  9: 0103, 1, 1051, PRO1+ARRY,    50,     0,     0
+ # 10: 0103, 1, 104f, PRO1+ARRX,    50,     0,     0
+ # 11: 0105, 1, 104d, PRO1+ARRNAME,    50,     0,     0
+ # 12: 0002, 1, 104c, PRO1+ARRSIZE,     0,     0,     0
+ # 13: 0005, 1, 104b, PRO1+STRINPUT,     0,     0,     0
+ # 14: 0003, 1, 104a, PRO1+PAZ,     0,     0,     0
+ # 15: 0003, 1, 1049, PRO1+PAY,     0,     0,     0
+ # 16: 0003, 1, 1048, PRO1+PAX,     0,     0,     0
+ # 17: 0003, 1, 1047, PRO1+PZ,     0,     0,     0
+ # 18: 0003, 1, 1046, PRO1+PY,     0,     0,     0
+ # 19: 0003, 1, 1045, PRO1+PX,     0,     0,     0
+ # 20: 0005, 1, 1044, PRO1+STREXTRA4,     0,     0,     0
+ # 21: 0005, 1, 1043, PRO1+STREXTRA3,     0,     0,     0
+ # 22: 0005, 1, 1042, PRO1+STREXTRA2,     0,     0,     0
+ # 23: 0005, 1, 1041, PRO1+STREXTRA1,     0,     0,     0
+ # 24: 0005, 1, 1040, PRO1+STRAZ,     0,     0,     0
+ # 25: 0005, 1, 103f, PRO1+STRAY,     0,     0,     0
+ # 26: 0005, 1, 103e, PRO1+STRAX,     0,     0,     0
+ # 27: 0005, 1, 103d, PRO1+STRZ,     0,     0,     0
+ # 28: 0005, 1, 103c, PRO1+STRY,     0,     0,     0
+ # 29: 0005, 1, 103b, PRO1+STRX,     0,     0,     0
+ # 30: 0005, 1, 103a, PRO1+STRMODE,     0,     0,     0
+ # 31: 007f, 1, 1000, PRO1
+FA:007a:'free allocation'
+EA:'end of allocation map'
+EM:'end of link map'
