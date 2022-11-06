@@ -17,6 +17,8 @@ def newProgram(name):
     #contents = contents + '\'!TITLE "' + name + '"'  + "\n"
     contents = contents + 'PROGRAM PRO1'  + "\n"
     contents = contents + "" + "\n"
+    contents = contents + "TakeArm 0 keep=0" + "\n"
+    contents = contents + "MOTOR ON" + "\n\n"
 
     oomWriteToFile(getPro1Name(name),contents)
 
@@ -26,29 +28,35 @@ def getDefaultPoints():
     rv  =[]
     d = {
     "NAME" : "oomHome",
-    "X" : 450,
-    "Y" : 0,
-    "Z" : 800,
-    "AX" : 180,
-    "AY" : 0,
-    "AZ" : 180
+    "X" : 450,"Y" : 0,"Z" : 800,"AX" : 45,"AY" : 45,"AZ" : 45
     }
     rv.append(d)
     return rv
 
 def addCommandsToProgram(name,commands):
-    contents  =""
+    contents  ="*BEGIN:\n\n"
     for command in commands:
         c = getCommandString(command)
         contents = contents + c + "\n"
 
+
+
+    contents  =contents + "GOTO *BEGIN" + "\n"
     oomAddLineToFile(getPro1Name(name),contents)
+
 
 
 def getCommandString(command):
     rv = ""
     if command["COMMAND"] == "MOVE":
-        rv = "MOVE " + command["MODIFIER"] + " @P " + command["POINT1"]
+        rv = "MOVE " + command["MODIFIER"] + ", " + command["POINTNAME"]           
+    elif command["COMMAND"] == "JOG":    
+        j = command["POINT1"]
+        moveString = "(" + str(j["X"]) + ","  +str(j["Y"]) + ","  +str(j["Z"]) + ","  +str(j["RX"]) + ","  +str(j["RY"]) + ","  +str(j["RZ"]) + ")"
+        rv = rv + "temp1 = CURPOS + " + moveString + "\n"
+        rv = rv + "MOVE P, temp1" 
+    elif command["COMMAND"] == "DELAY":
+        rv = "DELAY " + command["VALUE1"]
     return rv
 
 def addPointsToProgram(name,points):
@@ -58,7 +66,7 @@ def addPointsToProgram(name,points):
         for p in points:
             pointNames = p["NAME"] + "," + pointNames
         pointNames = pointNames[0:len(pointNames)-1]
-        pointDef = "DEFPOS " + pointNames
+        pointDef = "DEFPOS temp1," + pointNames
         contents = contents + pointDef + "\n\n"
 
         pointDec = ""
