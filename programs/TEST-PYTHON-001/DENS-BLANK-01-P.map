@@ -1,0 +1,14 @@
+SM:DENS-BLANK-01-P.map:'link map'
+MV:1.9:'compiler version'
+TC:0:'Trace Code'
+SA:'allocation map'
+LM:1:Autoexec.ric:0000:1000-1039:'link module'
+ #  0: 007f, 1, 1000, AUTOEXEC
+LM:2:PRO1.ric:003a:103a-1076:'link module'
+ #  1: 0006, 1, 1076, PRO1+OOMHOME,     0,     0,     0
+ #  2: 0006, 1, 1075, PRO1+MOVE100,     0,     0,     0
+ #  3: 0006, 1, 1074, PRO1+HOMEUP,     0,     0,     0
+ #  4: 007f, 1, 103a, PRO1
+FA:0076:'free allocation'
+EA:'end of allocation map'
+EM:'end of link map'

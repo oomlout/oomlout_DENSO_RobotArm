@@ -18,7 +18,7 @@ class machine:
 
 ##################################  BASIC HELPERS
 
-    def __init__(self,port="COM6"):
+    def __init__(self,port="COM9"):
         print("Starting Machine on port: " + port)
         self.ser = serial.Serial(
                 port=port,
@@ -27,8 +27,7 @@ class machine:
                 stopbits=serial.STOPBITS_ONE,
                 bytesize=serial.EIGHTBITS
             )
-        oomDelay(8)
-        print(self.read())
+        #print(self.read())
         #self.ser.open()
 
     def close(self):
@@ -36,28 +35,27 @@ class machine:
         self.ser.close()   
 
     def read(self):
+        return self.ser.read_all().decode("utf-8") 
+        #return self.ser.read(500).decode("utf-8") 
+        
 
-        #return self.ser.read_all().decode("utf-8") 
-        bytes("Waiting for input:"
-
-    def sendString(self,st,debug=True,waitOk=False):
+    def sendString(self,st,debug=True):
+        self.ser.flushInput()
         if debug:
             print("        Sending: " + st)
-            bts = bytes(st + "\n\r", encoding='utf8')
-        self.ser.write(bts)
-        oomDelay(1)
-        if not waitOk:
+            st = st + "\r"
+        self.ser.write(st.encode())
+        waitTry = 50
+        for x in range(0,waitTry):
             read = self.read()
-            return read
-        else:
-            waitTry = 100
-            for x in range(0,waitTry):
-                read = self.read())
-                print(read)
-                if "Waiting for input" in read:
-                    return read
-                else:
-                    oomDelay(1)
+            #print("read" + read)
+            if "OK" in read:
+                return read
+            else:
+                if "ERROR" in read:
+                    raise Exception("Error in command (Response)")
+                oomDelay(0.1)
+        raise Exception("Error in command (Timeout)")
 
     def sendCommand(self, command,x=None,y=None,z=None,s=None,waitOk=False):
         #if command.startswith("M"):
@@ -90,61 +88,25 @@ class machine:
 #####################  Movement
 
     def getPosition(self):
-        ######  M114
-        ######  X:0.00 Y:0.00 Z:0.00 E:0.00 Count X:0 Y:0 Z:0
-        locString = self.sendCommand("C,",waitOk=True)        
-        replaceList = []
-        replaceList.append("X:")
-        replaceList.append("Y:")
-        replaceList.append("Z:")
-        replaceList.append("E:")
-        replaceList.append("Count:")
-        for rep in replaceList:
-            locString = locString.replace(rep,"")
-        locList = locString.split(" ")        
-        x=locList[0]
-        y=locList[1]
-        z=locList[2]
-        e=locList[3]
-        return {"X" : x,"Y" : y,"Z" : z,"E" : e,}
+        pos = self.sendString("G")
+        pos = pos.split("\r")[0]
+        positions = pos.split(" ")
+        points = ["X","Y","Z","RX","RY","RZ"]
+        rv = {}
+        for i in range(0,6):
+            rv[points[i]] = float(positions[i])
+        return rv
 
-    def home(self,axis=""):
-        command = "G28 " + axis
-        print("    Homing...") 
-        test = self.sendCommand(command,waitOk=True)
-        if "ok" not in test:
-            raise Exception("Error when homing") 
-        return test          
-
-
-    def move(self,pos=None,x=None,y=None,z=None,rx=None,ry=None,rz=None,feedrate=None,abs=False,wait=False):
+    def move(self,pos=None,speed=None,abs=False):
         ##### Relative Setting
+        command = "M" ### default to a relative move
         if abs:
-            self.setAbsolutePositioning()
-        else:
-            self.setRelativePositioning()
-
-        #######  Sorting out coordinates
-        if pos == None:
-            pos = {"X" : x,"Y" : y,"Z" : z,"E" : e,}
-        command = "G1"
-        if pos["X"] != None:
-            command = command + " X" + str(pos["X"] )
-        if pos["Y"] != None:
-            command = command + " Y" + str(pos["Y"]) 
-        if pos["Z"] != None:
-            command = command + " Z" + str(pos["Z"])
-        if pos["E"] != None:
-            command = command +" E" + str(pos["E"]   )
-        if feedrate != None:
-            command = command +" F" + feedrate  
-        test = self.sendCommand(command)
-        if "ok" not in test:
-            raise Exception("Error when moving")        
-        if wait:
-            self.getPosition()            
-        return test
-
+            command = "P" ### make it an acsolut move
+        fullCommand = command + ","
+        for p in pos:
+            fullCommand = fullCommand + str(pos[p]) + ","
+        self.sendString(fullCommand)
+        
 ############################# Positioning routines
 
     def setAbsPos(self):

@@ -1,0 +1,56 @@
+[SYSMAN]
+Version=2.8.1
+SysFldName=C:\Program Files (x86)\WINCAPS2 DENSO\
+FldName=C:\DB\Dropbox\BBBB-Product Working\DENS\DENS-programs\DENS-FEED-01\
+PrjName=DENS-FEED-01
+RobotType= 3
+TypeID=&H5
+CellType= 0
+TypeName=VM-60B1D
+[PACMAN]
+DefPrjName=<RobotType\565-fpac.mdb>
+PrjName=DENS-FEED-01-P.ppj
+[VARMAN]
+DefPrjName=<RobotType\565-var.mdb>
+PrjName=DENS-FEED-01-V.var
+[DIOMAN]
+DefPrjName=<RobotType\565-dio.mdb>
+PrjName=DENS-FEED-01-D.dio
+[ARMMAN]
+DefPrjName=<RobotType\566-arm.mdb>
+PrjName=DENS-FEED-01-A.arm
+[VISMAN]
+DefPrjName=<RobotType\565-vis.mdb>
+PrjName=DENS-FEED-01-I.vis
+[LOGMAN]
+DefPrjName=<RobotType\565-log.mdb>
+PrjName=DENS-FEED-01-L.log
+[COMMAN]
+RbtlkDevice= 0
+RbtlkTimeout= 4000
+RbtlkToutRetry= 3
+RbtlkRetry= 3
+RbtlkConnection= 1
+[RS232C]
+RsPortExNo= 9
+RsPortNo= 9
+RsBaudrate= 2
+RsParityBit= 1
+RsDataLen= 4
+RsStopBit= 0
+[TELPHONE]
+TelDevice=-1
+TelLocation=My Location
+TelNumber=5554221
+TelAutoResponse= 0
+[ETHERNET]
+sckRemotePort= 4112
+sckLocalPort= 0
+[COMLOG]
+logFileName=C:\Program Files (x86)\WINCAPS2 DENSO\$comman.log
+[VARIABLE]
+varCtrlSize= 8
+varVecSize= 3
+varPosSize= 7
+varJntSize= 6
+varTrnSize= 10

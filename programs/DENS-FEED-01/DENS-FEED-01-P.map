@@ -1,0 +1,42 @@
+SM:DENS-FEED-01-P.map:'link map'
+MV:1.9:'compiler version'
+TC:0:'Trace Code'
+SA:'allocation map'
+LM:1:Autoexec.ric:0000:1000-1039:'link module'
+ #  0: 007f, 1, 1000, AUTOEXEC
+LM:2:PRO1.ric:003a:103a-10a5:'link module'
+ #  1: 0002, 1, 1099, PRO1+XLOOP,     0,     0,     0
+ #  2: 0006, 1, 1098, PRO1+POINT3,     0,     0,     0
+ #  3: 0006, 1, 1097, PRO1+POINT2,     0,     0,     0
+ #  4: 0002, 1, 1096, PRO1+WORKING,     0,     0,     0
+ #  5: 0103, 1, 1094, PRO1+ARRAZ,    50,     0,     0
+ #  6: 0103, 1, 1092, PRO1+ARRAY,    50,     0,     0
+ #  7: 0103, 1, 1090, PRO1+ARRAX,    50,     0,     0
+ #  8: 0103, 1, 108e, PRO1+ARRZ,    50,     0,     0
+ #  9: 0103, 1, 108c, PRO1+ARRY,    50,     0,     0
+ # 10: 0103, 1, 108a, PRO1+ARRX,    50,     0,     0
+ # 11: 0105, 1, 1088, PRO1+ARRNAME,    50,     0,     0
+ # 12: 0002, 1, 1087, PRO1+ARRSIZE,     0,     0,     0
+ # 13: 0005, 1, 1086, PRO1+STRINPUT,     0,     0,     0
+ # 14: 0005, 1, 1085, PRO1+NA,     0,     0,     0
+ # 15: 0003, 1, 1084, PRO1+PAZ,     0,     0,     0
+ # 16: 0003, 1, 1083, PRO1+PAY,     0,     0,     0
+ # 17: 0003, 1, 1082, PRO1+PAX,     0,     0,     0
+ # 18: 0003, 1, 1081, PRO1+PZ,     0,     0,     0
+ # 19: 0003, 1, 1080, PRO1+PY,     0,     0,     0
+ # 20: 0003, 1, 107f, PRO1+PX,     0,     0,     0
+ # 21: 0005, 1, 107e, PRO1+STREXTRA4,     0,     0,     0
+ # 22: 0005, 1, 107d, PRO1+STREXTRA3,     0,     0,     0
+ # 23: 0005, 1, 107c, PRO1+STREXTRA2,     0,     0,     0
+ # 24: 0005, 1, 107b, PRO1+STREXTRA1,     0,     0,     0
+ # 25: 0005, 1, 107a, PRO1+STRAZ,     0,     0,     0
+ # 26: 0005, 1, 1079, PRO1+STRAY,     0,     0,     0
+ # 27: 0005, 1, 1078, PRO1+STRAX,     0,     0,     0
+ # 28: 0005, 1, 1077, PRO1+STRZ,     0,     0,     0
+ # 29: 0005, 1, 1076, PRO1+STRY,     0,     0,     0
+ # 30: 0005, 1, 1075, PRO1+STRX,     0,     0,     0
+ # 31: 0005, 1, 1074, PRO1+STRMODE,     0,     0,     0
+ # 32: 007f, 1, 103a, PRO1
+FA:00a5:'free allocation'
+EA:'end of allocation map'
+EM:'end of link map'
